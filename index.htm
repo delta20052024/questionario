@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionario di autopercezione carico di cura</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+
+    <!-- Pagina di Benvenuto -->
+    <div id="welcomePage" class="container my-4 p-4 bg-white rounded shadow-sm fade" style="display: none;">
+        <h3 class="mb-5">Questionario di autopercezione carico di cura</h3>
+        <p>Il questionario si pone l'obiettivo di capire qual è la tua percezione sul carico di cura che stai vivendo.</p>
+        <p>Il <b>Zarit Burden Inventory</b> detiene un'ottima coerenza interna ed è strumento utile per orientare il tuo impegno accendendo la riflessione su alcuni aspetti che a volte non consideri come carichi.  Non ci sono risposte giuste o sbagliate.</p>
+        <p>La modalità di risposta p richiesta in base al tuo grado di accordo con la singola affermazione:<br>
+            <ul>
+            <li>0 Mai<br>
+            <li>1 Raramente</li>
+            <li>2 Qualche volta</li>
+            <li>3 Spesso</li>
+            <li>4 Quasi sempre.</li>
+            </ul>
+        </p>
+        <p>Ti ricordiamo che per il questionario non è previsto alcuna raccolta di dati personali, le tue risposte saranno trattate in forma completamente anonima e che tutte le informazioni saranno utilizzate a soli fini statistici per le esclusive finalità sopra indicate.</p>
+
+        <button id="startBtn" class="btn btn-primary">Inizia</button>
+    </div>
+	
+    <div id="questionnaireContainer" class="container my-4 p-4 bg-white rounded shadow-sm fade" style="display: none;">
+        <h3 class="text-center mb-4">Questionario di autopercezione carico di cura</h3>
+        
+        <!-- Mappa degli step -->
+        <div class="step-map position-relative mb-4 fade" style="display:none">
+            <div class="step-line position-absolute w-100 bg-primary"></div>
+        </div>
+
+        <form id="questionario_form">
+            <div class="step active fade">
+                <h4 id="step-title" class="mb-3"></h4>
+                <div class="row mb-3 form-container">
+                </div>
+            </div>
+
+            <div class="btn-container active d-flex justify-content-between mt-4 fade">
+                <button type="button" class="btn btn-primary" id="prevBtn" sstyle="display:none">Indietro</button>
+                <button type="button" class="btn btn-primary" id="nextBtn" sstyle="display:none">Avanti</button>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-success w-100" id="submitBtn">INVIA</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modale dinamico -->
+    <div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <p id="modalMessage"></p> <!-- Messaggio dinamico -->
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="modalSecondaryButton" data-bs-dismiss="modal">Annulla</button>
+            <button type="button" class="btn btn-primary" id="modalPrimaryButton"></button> <!-- Bottone principale dinamico -->
+            </div>
+        </div>
+        </div>
+    </div>
+  
+  
+
+    <!-- Messaggio finale -->
+    <div class="modal fade" id="finalMessageModal" tabindex="-1" aria-labelledby="finalMessageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="finalMessageModalLabel">Messaggio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="finalMessageContent">
+                    <!-- Il messaggio finale sarà inserito dinamicamente -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<!-- Pagina di Uscita: Questionario Non Completato -->
+	<div id="incompleteExitPage" class="container my-4 p-4 bg-white rounded shadow-sm text-center fade" style="display: none;">
+		<h1>Salvataggio Incompleto</h1>
+		<p>Il questionario non è stato completato. Le tue risposte sono state salvate e potrai riprendere da dove hai lasciato.</p>
+		<button id="exitIncompleteBtn" class="btn btn-primary">Chiudi</button>
+	</div>
+
+	<!-- Pagina di Uscita: Questionario Completato -->
+	<div id="completeExitPage" class="container my-4 p-4 bg-white rounded shadow-sm fade" style="display: none;">
+		<h4 class="mb-5">Grazie per aver partecipato.</h4>
+		<p>Di seguito trovi il tuo posizionamento percepito rispetto agli attuali carichi di cura.</p>
+        <p>Ti invitiamo, se vuoi, a ripetere il questionario a distanza di tempo per monitorare nel tempo la tua percezione dell'esperienza di caregiver.</p>
+        <p class="my-5 h5" id="messageContainer">...</p>
+		<button id="exitCompleteBtn" class="btn btn-primary">Chiudi</button>
+	</div>
+    
+    <!-- Collegamento ai file JavaScript -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/question.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
